@@ -1,0 +1,18 @@
+{
+	"ignore": [
+		"bower.json",
+		"dev",
+		".gitignore",
+		"README.md"
+	],
+	"keywords": [
+		"postmonger",
+		"front end",
+		"post message",
+		"cross domain",
+		"communication",
+		"web"
+	],
+	"name": "postmonger",
+	"version": "0.0.13"
+}

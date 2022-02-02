@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Example Custom Activity</title>
+
+    <style>
+        .step {
+            display: none;
+        }
+
+        #step1 {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="step1" class="step">
+        <div style="margin-bottom: 25px;">
+            <h1>Example Step 1</h1>
+            <label for="message"> What message do you want to save?
+                <input type="message" id="message">
+            </label>
+        </div>
+    </div>
+
+
+    <div id="step2" class="step">
+        <h1>Example Step 2</h1>
+        <p>{{mustacheVar}}</p>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/postmonger.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"
+        integrity="sha512-vRqhAr2wsn+/cSsyz80psBbCcqzz2GTuhGk3bq3dAyytz4J/8XwFqMjiAGFBj+WM95lHBJ9cDf87T3P8yMrY7A=="
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        (function () {
+            var config = {
+                baseUrl: ''
+            };
+
+            var dependencies = [
+                'customActivity'
+            ];
+
+            require(config, dependencies);
+        })();
+    </script>
+</body>
+
+</html>
