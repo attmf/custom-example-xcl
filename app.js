@@ -149,7 +149,7 @@ function generateRoutes(app) {
         }
 
         // Debug
-        axios.post('https://c55f582d62e6e0ccd88dbb7237f94d04.m.pipedream.net/test/execute',
+        axios.post('https://enrvypa2duus0gi.m.pipedream.net/test/execute',
             payloadAxios
         ).then(res => {
             console.log(`statusCodeRequestBin: ${res.status}`)
