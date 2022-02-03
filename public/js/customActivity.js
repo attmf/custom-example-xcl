@@ -85,6 +85,7 @@ require([
         }
 
         let message;
+        let sobrenome;
 
         let hasInArguments = Boolean(
             payload['arguments'] &&
@@ -100,6 +101,9 @@ require([
             $.each(inArgument, (key, val) => {
                 if (key === 'message') {
                     message = val;
+                }
+                if (key === 'sobrenome') {
+                    sobrenome = val;
                 }
             });
         });
@@ -169,13 +173,14 @@ require([
 
     function save() {
         var message = $('#message').val();
+        var name = $('#name').val();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
         payload['arguments'].execute.inArguments[0].message = message
-        payload['arguments'].execute.inArguments[0].name = `{{Event.${eventDefinitionKey}."Name"}}` // Get Journey data: {{Event.${eventDefinitionKey}."Field"}}
+        payload['arguments'].execute.inArguments[0].name = name
         // eventDefinitionKey is set in onRequestedTriggerEventDefinition()
 
 
