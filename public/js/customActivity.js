@@ -55,7 +55,7 @@ require([
             eventDate = $('#eventDate').val()
             idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
-                button: 'done',
+                button: 'next',
                 enabled: Boolean(idPartMktCloud.val)
             });
         });
@@ -86,11 +86,11 @@ require([
 
         let inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-        console.log('-------- triggered:onInitActivity({obj}) --------');
-        console.log('activity:\n ', JSON.stringify(payload, null, 4));
-        console.log('Has In Arguments: ', hasInArguments);
-        console.log('inArguments', inArguments);
-        console.log('-------------------------------------------------');
+        // console.log('-------- triggered:onInitActivity({obj}) --------');
+        // console.log('activity:\n ', JSON.stringify(payload, null, 4));
+        // console.log('Has In Arguments: ', hasInArguments);
+        // console.log('inArguments', inArguments);
+        // console.log('-------------------------------------------------');
 
         $.each(inArguments, (index, inArgument) => {
             $.each(inArgument, (key, val) => {
@@ -134,7 +134,7 @@ require([
 
         // If there is a message enable de next button
         connection.trigger('updateButton', {
-            button: 'done',
+            button: 'next',
             enabled: Boolean(idPartMktCloud.val)
         });
     }
@@ -166,7 +166,7 @@ require([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: true
+                    enabled: Boolean(idPartMktCloud.val)
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -218,36 +218,36 @@ require([
 
         payload['metaData'].isConfigured = true;
 
-        console.log('------------ triggering:updateActivity({obj}) ----------------');
-        console.log('Sending message back to updateActivity');
-        console.log('saving\n', JSON.stringify(payload, null, 4));
-        console.log('--------------------------------------------------------------');
+        // console.log('------------ triggering:updateActivity({obj}) ----------------');
+        // console.log('Sending message back to updateActivity');
+        // console.log('saving\n', JSON.stringify(payload, null, 4));
+        // console.log('--------------------------------------------------------------');
 
         connection.trigger('updateActivity', payload);
     }
 
     function onGetTokens(tokens) {
-        console.log('tokens:\n', JSON.stringify(tokens, null, 4));
+        // console.log('tokens:\n', JSON.stringify(tokens, null, 4));
     }
 
     function onGetEndpoints(endpoints) {
-        console.log('endpoints:\n', JSON.stringify(endpoints, null, 4));
+        // console.log('endpoints:\n', JSON.stringify(endpoints, null, 4));
     }
 
     function onRequestedCulture(cultureCodeString) {
-        console.log('cultureCodeString:\n', JSON.stringify(cultureCodeString, null, 4));
+        // console.log('cultureCodeString:\n', JSON.stringify(cultureCodeString, null, 4));
     }
 
     function onRequestedInteractionDefaults(settings) {
-        console.log('settings:\n', JSON.stringify(settings, null, 4));
+        // console.log('settings:\n', JSON.stringify(settings, null, 4));
     }
 
     function oRequestedInteraction(interaction) {
-        console.log('interaction:\n', JSON.stringify(interaction, null, 4));
+        // console.log('interaction:\n', JSON.stringify(interaction, null, 4));
     }
 
     function onRequestedTriggerEventDefinition(eventDefinitionModel) {
-        console.log('eventDefinitionModel:\n', JSON.stringify(eventDefinitionModel, null, 4));
+        // console.log('eventDefinitionModel:\n', JSON.stringify(eventDefinitionModel, null, 4));
         eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
     }
 });
