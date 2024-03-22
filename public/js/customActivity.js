@@ -193,8 +193,8 @@ require([
         
 
         payload['arguments'].execute.inArguments[0].suid = `{{Event.${eventDefinitionKey}."${suid}"}}` //DE
-        payload['arguments'].execute.inArguments[0].coop = coop //DE
-        payload['arguments'].execute.inArguments[0].account = account //DE
+        payload['arguments'].execute.inArguments[0].coop = `{{Event.${eventDefinitionKey}."${coop}"}}` //DE
+        payload['arguments'].execute.inArguments[0].account = `{{Event.${eventDefinitionKey}."${account}"}}` //DE
         payload['arguments'].execute.inArguments[0].category = category
         payload['arguments'].execute.inArguments[0].family = family
         payload['arguments'].execute.inArguments[0].idPartMktCloud = idPartMktCloud //INPUT
