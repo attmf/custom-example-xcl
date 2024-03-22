@@ -200,11 +200,6 @@ require([
     }
 
     function save() {
-        // var message = $('#message').val();
-        // var type = $('#message2').val();
-        // var category = $('#category').val();
-        // var buttonTitle = $('#buttonTitle').val();
-        var buttonTitle = $('#buttonTitle').val();
         var sendId = $('#sendId').val();
         var suid = $('#suid').val();
         var coop = $('#coop').val();
@@ -220,19 +215,15 @@ require([
         // may be overridden as desired.
         
 
-        payload['arguments'].execute.inArguments[0].sendId = sendId
-        payload['arguments'].execute.inArguments[0].suid = suid
-        payload['arguments'].execute.inArguments[0].coop = coop
-        payload['arguments'].execute.inArguments[0].account = account
+        payload['arguments'].execute.inArguments[0].sendId = suid + coop + account
+        payload['arguments'].execute.inArguments[0].suid = `{{Event.${eventDefinitionKey}.${suid}}}` //DE
+        payload['arguments'].execute.inArguments[0].coop = coop //DE
+        payload['arguments'].execute.inArguments[0].account = account //DE
         payload['arguments'].execute.inArguments[0].category = category
         payload['arguments'].execute.inArguments[0].family = family
-        payload['arguments'].execute.inArguments[0].eventDate = eventDate
-        payload['arguments'].execute.inArguments[0].idPartMktCloud = idPartMktCloud
+        payload['arguments'].execute.inArguments[0].eventDate = eventDate //GERAR
+        payload['arguments'].execute.inArguments[0].idPartMktCloud = idPartMktCloud //INPUT
 
-        // payload['arguments'].execute.inArguments[0].message = message
-        // payload['arguments'].execute.inArguments[0].type = type
-        // payload['arguments'].execute.inArguments[0].category = category
-        // payload['arguments'].execute.inArguments[0].buttonTitle = buttonTitle
         //payload['arguments'].execute.inArguments[0].name = `{{Event.${eventDefinitionKey}."name"}}`
 
         payload['metaData'].isConfigured = true;
