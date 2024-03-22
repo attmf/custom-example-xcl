@@ -12,7 +12,7 @@ module.exports = function configJSON(req) {
         type: 'REST',
         lang: {
             'en-US': {
-                name: 'Example of a Custom Activity',
+                name: 'Example of a Custom Activity 2',
                 description: 'Custom Activity used only as an Example, it will read an write records in Data Extensions'
             }
         },
@@ -20,11 +20,7 @@ module.exports = function configJSON(req) {
             execute: {
                 // See: https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/how-data-binding-works.htm
                 inArguments: [{
-                    email: '{{InteractionDefaults.Email}}',
-                    message: '',
-                    SubscriberKey: '{{Contact.Key}}',
-                    numberID: '{{Contact.Attribute."DE_Raphael_Teste_Custom_Consultar"."numberID"}}', // Get contact data: {{Contact.Attribute."DE_Name_Synced_At_Data_Design"."DE_Field"}}
-                    name: ''
+                    SubscriberKey: '{{Contact.Key}}'
                 }],
                 outArguments: [],
                 // Executes API call when contact passes through the Custom Activity step

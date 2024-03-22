@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Example Custom Activity</title>
+    <title>Notification Activity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
         .step {
@@ -19,35 +20,48 @@
 
 <body>
     <div id="step1" class="step">
-        <div style="margin-bottom: 25px;">
-            <h1>Example Step 1</h1>
-            <label for="message"> What message do you want to save?
-                <input type="message" id="message">
-            </label>
+        <div class="p-4" style="background-color: #F9F9F9;">
+            <svg width="160" viewBox="0 0 161 32" class=""><path fill="#7ac245" d="M29.792 10.774l-11.759 11.77a4.302 4.302 0 01-3.06 1.269 4.304 4.304 0 01-3.062-1.269L0 10.771v10.493l6.595 6.602a11.771 11.771 0 008.378 3.472c3.164 0 6.139-1.234 8.376-3.472l6.443-6.449z"></path><path fill="#266bff" d="M23.277 4.243A11.803 11.803 0 0015.224.781a11.81 11.81 0 00-8.703 3.462l-6.52 6.528 5.345 5.28.008.01 6.484-6.495a4.32 4.32 0 013.063-1.27c1.109 0 2.216.425 3.06 1.27l11.84 11.85-.005-10.646z"></path><path fill="#262857" d="M80.235 25.026h3.976V7.283h-3.976zm-32.208-3.883c-2.713 0-4.838-2.213-4.838-5.038 0-2.77 2.125-4.94 4.838-4.94 2.393 0 4.936 1.766 4.936 5.038 0 2.816-2.122 4.94-4.936 4.94zm4.936-12.18c-1.37-1.068-3.164-1.68-5.098-1.68-4.933 0-8.653 3.807-8.653 8.855 0 4.984 3.801 8.888 8.653 8.888 1.936 0 3.73-.617 5.098-1.692v1.692h3.977V7.283h-3.977zM84.735 2.7A2.41 2.41 0 1182.327.29a2.41 2.41 0 012.408 2.41M68.018 21.143c-2.713 0-4.838-2.213-4.838-5.038 0-2.77 2.125-4.94 4.838-4.94 2.393 0 4.936 1.766 4.936 5.038 0 2.816-2.122 4.94-4.936 4.94zm4.936-13.86v1.68c-1.369-1.068-3.164-1.68-5.098-1.68-4.933 0-8.652 3.807-8.652 8.855 0 4.984 3.8 8.888 8.652 8.888 1.795 0 3.469-.528 4.795-1.458l.004.217c-.002 2.786-1.893 4.288-4.58 4.287-1.922 0-3.696-.586-5.305-1.654l-1.545 3.554c1.809 1.287 4.495 1.955 7.032 1.956 5.244.001 8.592-3.062 8.674-8.142V7.283zM29.792 21.407V10.775l-5.311 5.316zM0 21.265l.075.075 5.279-5.28L0 10.772zm152.48-4.835l8.267-7.762h-2.48l-7.308 6.912h-2.437V.143h-1.848V25.03h1.848v-7.703h2.413l7.493 7.703h2.434zm-17.295-7.946c-2.265 0-4.225.886-5.528 2.465v-2.28h-1.83V25.03h1.847v-9.418c0-3.1 2.275-5.349 5.41-5.349 3.399 0 5.428 1.956 5.428 5.231v9.536h1.83v-9.536c0-4.325-2.742-7.012-7.157-7.012zm-20.021 14.95c-3.66 0-6.418-2.827-6.418-6.577 0-3.758 2.759-6.592 6.418-6.592 3.66 0 6.419 2.834 6.419 6.592 0 3.75-2.76 6.577-6.42 6.577zm6.351-11.87c-1.486-1.948-3.787-3.082-6.351-3.082-4.723 0-8.285 3.6-8.285 8.375 0 4.766 3.562 8.359 8.285 8.359 2.561 0 4.862-1.13 6.351-3.07v2.885h1.831V8.668h-1.83v2.895zM96.328 23.433c-3.66 0-6.418-2.827-6.418-6.577 0-3.758 2.759-6.592 6.418-6.592 3.66 0 6.419 2.834 6.419 6.592 0 3.75-2.76 6.577-6.42 6.577zm0-14.952c-2.553 0-4.848 1.129-6.334 3.07V.141h-1.846V25.03h1.846v-2.873c1.49 1.933 3.784 3.058 6.334 3.058 4.732 0 8.3-3.593 8.3-8.359 0-4.775-3.568-8.375-8.3-8.375z"></path></svg>
+        </div>
+        <div class="p-3">
+            <div class="m-3">
+                <p class="h5">Tipo de Campanha</p>
+                <label for="message2">
+                    <select name="message2" id="message2">
+                        <option value="tran">Transacional</option>
+                        <option value="prom">Promocional</option>
+                    </select>
+                </label>
+            </div>
+            <div class="m-3">
+                <p class="h5">Categoria da Campanha</p>
+                <label for="category">
+                    <select name="category" id="category">
+                        <option value="TRANSACTION">TRANSACTION</option>
+                        <option value="WARNING">WARNING</option>
+                        <option value="NEWS">NEWS</option>
+                    </select>
+                </label>
+            </div>
+            <div id="campaignIDDiv" class="m-3">
+                <p class="h5">ID da Mensagem no Content Builder</p>
+                <label for="message">
+                    <input style="width: 200px;" name="message" id="message">
+                </label>
+            </div>
+            <div id="buttonTitleDiv" class="m-3">
+                <p class="h5">Texto do botão</p>
+                <label for="buttonTitle">
+                    <input style="width: 200px;" name="buttonTitle" id="buttonTitle">
+                </label>
+            </div>
         </div>
     </div>
 
 
-    <div id="step2" class="step">
-        <h1>Example Step 2</h1>
-        <label for="name"> What name do you want to save?
-            <input type="message" id="name">
-        </label>
-        <p>{{mustacheVar}}</p>
-    </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../js/postmonger.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"
-        integrity="sha512-vRqhAr2wsn+/cSsyz80psBbCcqzz2GTuhGk3bq3dAyytz4J/8XwFqMjiAGFBj+WM95lHBJ9cDf87T3P8yMrY7A=="
-        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="postmonger.js"></script>
+    <script type="text/javascript" src="require.js"></script>
 
     <script type="text/javascript">
         (function () {
@@ -61,6 +75,11 @@
 
             require(config, dependencies);
         })();
+    </script>
+    <script>
+        function showDiv(divId, element) {
+            document.getElementById(divId).style.display = element.value == 'prom' ? 'block' : 'none';
+        }
     </script>
 </body>
 

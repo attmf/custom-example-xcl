@@ -134,22 +134,21 @@ function generateRoutes(app) {
 
         // example: https://developer.salesforce.com/docs/atlas.en-us.noversion.mc-app-development.meta/mc-app-development/example-rest-activity.htm
         const messageInArgument = req.body.inArguments[0]['message'];
-        const emailInArgument = req.body.inArguments[0]['email'];
-        const SubscriberKeyInArgument = req.body.inArguments[0]['SubscriberKey'];
-        const numberIDInArgument = req.body.inArguments[0]['numberID'];
-        const nameInArgument = req.body.inArguments[0]['name'];
+        const typeInArgument = req.body.inArguments[0]['type'];
+        const categoryKeyInArgument = req.body.inArguments[0]['category'];
+        const buttonTitleIDInArgument = req.body.inArguments[0]['buttonTitle'];
 
         const payloadAxios = {
             "items": [{
-                "Email": emailInArgument,
-                "message": nameInArgument + ': ' + messageInArgument,
-                "SubscriberKey": SubscriberKeyInArgument,
-                "numberID": numberIDInArgument
+                "Email": typeInArgument,
+                "message": messageInArgument,
+                "SubscriberKey": categoryKeyInArgument,
+                "numberID": buttonTitleIDInArgument
             }]
         }
 
         // Debug
-        axios.post('https://enrvypa2duus0gi.m.pipedream.net/test/execute',
+        axios.post('https://enrvypa2duus0gi.m.pipedream.net',
             payloadAxios
         ).then(res => {
             console.log(`statusCodeRequestBin: ${res.status}`)

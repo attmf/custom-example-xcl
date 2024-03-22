@@ -9,12 +9,8 @@ require([
 
     let eventDefinitionKey;
     var steps = [{
-            label: 'Example Step 1',
+            label: 'Step 1',
             key: 'step1'
-        },
-        {
-            label: 'Example Step 2',
-            key: 'step2'
         }
     ];
     var currentStep = steps[0].key;
@@ -33,32 +29,23 @@ require([
     connection.on('requestedInteractionDefaults', onRequestedInteractionDefaults);
     connection.on('requestedInteraction', oRequestedInteraction);
     connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
-    // Unofficial
-    connection.on('requestedSchema', onRequestedSchema);
-    connection.on('requestedDataSources', onRequestedDataSources);
-    connection.on('requestedInteractionGoalStats', onRequestedInteractionGoalStats);
-    connection.on('requestedActivityPermissions', onRequestedActivityPermissions);
-    connection.on('requestedEngineSettings', onRequestedEngineSettings);
-    connection.on('requestedContactsSchema', onRequestedContactsSchema);
-    connection.on('requestedExpressionBuilderAttributes', onRequestedExpressionBuilderAttributes);
-    connection.on('requestedEntryEventDefinitionKey', onRequestedEntryEventDefinitionKey);
-    connection.on('requestedI18nConfig', onRequestedI18nConfig);
 
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
 
+        
         // Disable the done button if a value isn't selected
         $('#message').on('input', () => {
-            let message = $('#message').val();
+            let message = $('#message').val()
+            let type = $('#message2').val()
+            let category = $('#category').val()
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(message)
+                enabled: Boolean(message&&type&&category)
             });
         });
-
-
 
         // Optional
         connection.trigger('requestTokens');
@@ -67,25 +54,18 @@ require([
         connection.trigger('requestInteractionDefaults');
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
-        // Unofficial
-        connection.trigger('requestSchema');
-        connection.trigger('requestDataSources');
-        connection.trigger('requestInteractionGoalStats');
-        connection.trigger('requestActivityPermissions');
-        connection.trigger('requestEngineSettings');
-        connection.trigger('requestContactsSchema');
-        connection.trigger('requestExpressionBuilderAttributes');
-        connection.trigger('requestEntryEventDefinitionKey');
-        connection.trigger('requestI18nConfig');
     }
 
     function initialize(data) {
+
         if (data) {
             payload = data;
         }
 
         let message;
-        let sobrenome;
+        let category;
+        let type;
+        let buttonTitle;
 
         let hasInArguments = Boolean(
             payload['arguments'] &&
@@ -95,20 +75,39 @@ require([
         );
 
         let inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+
+        console.log('-------- triggered:onInitActivity({obj}) --------');
         console.log('activity:\n ', JSON.stringify(payload, null, 4));
+        console.log('Has In Arguments: ', hasInArguments);
+        console.log('inArguments', inArguments);
+        console.log('-------------------------------------------------');
 
         $.each(inArguments, (index, inArgument) => {
             $.each(inArgument, (key, val) => {
                 if (key === 'message') {
                     message = val;
                 }
-                if (key === 'sobrenome') {
-                    sobrenome = val;
+                else if (key === 'type') {
+                    type = val;
+                }
+                else if (key === 'category') {
+                    category = val;
+                }
+                else if (key === 'buttonTitle') {
+                    buttonTitle = val;
                 }
             });
         });
 
+        console.log('message -- ', message)
+        console.log('type -- ', type)
+        console.log('categoria -- ', category)
+        console.log('buttonTitle -- ', buttonTitle)
+
         $('#message').val(message);
+        $('#message2').val(type);
+        $('#category').val(category);
+        $('#buttonTitle').val(buttonTitle.replace(/\{{[\s\S]*?\}}/g, ''));
 
         // If there is a message enable de next button
         connection.trigger('updateButton', {
@@ -118,11 +117,7 @@ require([
     }
 
     function onClickedNext() {
-        if (currentStep.key === 'step2') {
-            save();
-        } else {
-            connection.trigger('nextStep');
-        }
+        save();
     }
 
     function onClickedBack() {
@@ -173,26 +168,34 @@ require([
 
     function save() {
         var message = $('#message').val();
-        var name = $('#name').val();
+        var type = $('#message2').val();
+        var category = $('#category').val();
+        var buttonTitle = $('#buttonTitle').val();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
-        payload['arguments'].execute.inArguments[0].message = message
-        payload['arguments'].execute.inArguments[0].name = name
-        // eventDefinitionKey is set in onRequestedTriggerEventDefinition()
+        
 
+        console.log(type)
+
+        payload['arguments'].execute.inArguments[0].message = message
+        payload['arguments'].execute.inArguments[0].type = type
+        payload['arguments'].execute.inArguments[0].category = category
+        payload['arguments'].execute.inArguments[0].buttonTitle = buttonTitle
+        //payload['arguments'].execute.inArguments[0].name = `{{Event.${eventDefinitionKey}."name"}}`
 
         payload['metaData'].isConfigured = true;
+
+        console.log('------------ triggering:updateActivity({obj}) ----------------');
+        console.log('Sending message back to updateActivity');
         console.log('saving\n', JSON.stringify(payload, null, 4));
+        console.log('--------------------------------------------------------------');
 
         connection.trigger('updateActivity', payload);
     }
 
-
-
-    // Optional
     function onGetTokens(tokens) {
         console.log('tokens:\n', JSON.stringify(tokens, null, 4));
     }
@@ -217,42 +220,4 @@ require([
         console.log('eventDefinitionModel:\n', JSON.stringify(eventDefinitionModel, null, 4));
         eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
     }
-
-    // Unofficial
-    function onRequestedSchema(schema) {
-        console.log('schema:\n', JSON.stringify(schema, null, 4));
-    }
-
-    function onRequestedDataSources(dataSources) {
-        console.log('dataSources:\n', JSON.stringify(dataSources, null, 4));
-    }
-
-    function onRequestedInteractionGoalStats(interactionGoalStats) {
-        console.log('interactionGoalStats:\n', JSON.stringify(interactionGoalStats, null, 4));
-    }
-
-    function onRequestedActivityPermissions(activityPermissions) {
-        console.log('activityPermissions:\n', JSON.stringify(activityPermissions, null, 4));
-    }
-
-    function onRequestedEngineSettings(engineSettings) {
-        console.log('engineSettings:\n', JSON.stringify(engineSettings, null, 4));
-    }
-
-    function onRequestedContactsSchema(contactsSchema) {
-        console.log('contactsSchema:\n', JSON.stringify(contactsSchema, null, 4));
-    }
-
-    function onRequestedExpressionBuilderAttributes(expressionBuilderAttributes) {
-        console.log('expressionBuilderAttributes:\n', JSON.stringify(expressionBuilderAttributes, null, 4));
-    }
-
-    function onRequestedEntryEventDefinitionKey(entryEventDefinitionKey) {
-        console.log('entryEventDefinitionKey:\n', JSON.stringify(entryEventDefinitionKey, null, 4));
-    }
-
-    function onRequestedI18nConfig(i18nConfig) {
-        console.log('i18nConfig:\n', JSON.stringify(i18nConfig, null, 4));
-    }
-
 });
