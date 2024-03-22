@@ -155,7 +155,7 @@ function generateRoutes(app) {
             }]
         }
 
-        console.log("Payload: " + JSON.stringify(payloadAxios, null, 2));
+        console.log("Payload: " + JSON.stringify(req.body, null, 2));
 
         const config = {
             headers: {
