@@ -135,7 +135,7 @@ require([
         // If there is a message enable de next button
         connection.trigger('updateButton', {
             button: 'done',
-            enabled: Boolean(idPartMktCloud)
+            enabled: Boolean(idPartMktCloud.val)
         });
     }
 
