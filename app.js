@@ -147,9 +147,16 @@ function generateRoutes(app) {
             }]
         }
 
+        const config = {
+            headers: {
+              'Authorization': 'Bearer iWw9Bd8ahpAXChc3KtbWz6vg'
+            }
+        }
+
         // Debug
-        axios.post('https://enrvypa2duus0gi.m.pipedream.net',
-            payloadAxios
+        axios.post('https://in.logs.betterstack.com',
+            payloadAxios,
+            config
         ).then(res => {
             console.log(`statusCodeRequestBin: ${res.status}`)
         }).catch(error => {
