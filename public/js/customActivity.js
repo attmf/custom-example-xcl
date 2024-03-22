@@ -33,28 +33,21 @@ require([
 
 
     function onRender() {
-        let sendId;
-        let suid;
-        let coop;
-        let account;
-        let category;
-        let family;
-        let eventDate;
-        let idPartMktCloud;
+        
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
 
         
         // Disable the done button if a value isn't selected
         $('#idPartMktCloud').on('input', () => {
-            sendId = $('#sendId').val()
-            suid = $('#suid').val()
-            coop = $('#coop').val()
-            account = $('#account').val()
-            category = $('#category').val()
-            family = $('#family').val()
-            eventDate = $('#eventDate').val()
-            idPartMktCloud = $('#idPartMktCloud').val()
+            let sendId = $('#sendId').val()
+            let suid = $('#suid').val()
+            let coop = $('#coop').val()
+            let account = $('#account').val()
+            let category = $('#category').val()
+            let family = $('#family').val()
+            let eventDate = $('#eventDate').val()
+            let idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'next',
                 enabled: Boolean(idPartMktCloud)
@@ -76,7 +69,14 @@ require([
             payload = data;
         }
 
-        
+        let sendId;
+        let suid;
+        let coop;
+        let account;
+        let category;
+        let family;
+        let eventDate;
+        let idPartMktCloud;
 
         let hasInArguments = Boolean(
             payload['arguments'] &&
@@ -167,7 +167,7 @@ require([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(idPartMktCloud)
+                    enabled: Boolean($('#idPartMktCloud').val())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -184,21 +184,21 @@ require([
                     button: 'next',
                     text: 'done',
                     visible: true,
-                    enabled: Boolean(idPartMktCloud)
+                    enabled: true
                 });
                 break;
         }
     }
 
     function save() {
-        sendId = $('#sendId').val();
-        suid = $('#suid').val();
-        coop = $('#coop').val();
-        account = $('#account').val();
-        category = $('#category').val();
-        family = $('#family').val();
-        eventDate = $('#eventDate').val();
-        idPartMktCloud = $('#idPartMktCloud').val();
+        let sendId = $('#sendId').val();
+        let suid = $('#suid').val();
+        let coop = $('#coop').val();
+        let account = $('#account').val();
+        let category = $('#category').val();
+        let family = $('#family').val();
+        let eventDate = $('#eventDate').val();
+        let idPartMktCloud = $('#idPartMktCloud').val();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
