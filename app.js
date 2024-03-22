@@ -158,13 +158,13 @@ function generateRoutes(app) {
         });
 
         // Insert Data to DE
-        axios.post(`${process.env.urlRest}data/v1/async/dataextensions/key:${process.env.deKey}/rows/`, payloadAxios)
-            .then(res => {
-                console.log(`statusCodeExecute: ${res.status}`)
-                console.log(res.data)
-            }).catch(error => {
-                console.error(error)
-            });
+        // axios.post(`${process.env.urlRest}data/v1/async/dataextensions/key:${process.env.deKey}/rows/`, payloadAxios)
+        //     .then(res => {
+        //         console.log(`statusCodeExecute: ${res.status}`)
+        //         console.log(res.data)
+        //     }).catch(error => {
+        //         console.error(error)
+        //     });
         return res.status(200).json({});
     });
 
