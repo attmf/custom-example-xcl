@@ -10,8 +10,8 @@ module.exports = function configJSON(req) {
         type: 'REST',
         lang: {
             'en-US': {
-                name: 'Example of a Custom Activity 2',
-                description: 'Custom Activity used only as an Example, it will read an write records in Data Extensions'
+                name: 'mkt-cloud-stimulus',
+                description: 'Estímulo no app Sicredi'
             }
         },
         arguments: {
@@ -42,12 +42,8 @@ module.exports = function configJSON(req) {
             },
         },
         wizardSteps: [{
-                label: 'Example Step 1',
+                label: 'Configurações',
                 key: 'step1'
-            },
-            {
-                label: 'Example Step 2',
-                key: 'step2'
             }
         ],
         userInterfaces: {

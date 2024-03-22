@@ -50,7 +50,7 @@ require([
             let eventDate = $('#eventDate').val()
             let idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
-                button: 'next',
+                button: 'done',
                 enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
             });
         });
@@ -144,8 +144,8 @@ require([
 
         // If there is a message enable de next button
         connection.trigger('updateButton', {
-            button: 'next',
-            enabled: Boolean(message)
+            button: 'done',
+            enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
         });
     }
 
