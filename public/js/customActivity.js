@@ -51,7 +51,7 @@ require([
             let idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
+                enabled: Boolean(sendId)
             });
         });
 
