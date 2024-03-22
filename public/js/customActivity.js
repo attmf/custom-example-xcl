@@ -56,7 +56,7 @@ require([
             idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'done',
-                enabled: true
+                enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
             });
         });
 
@@ -135,7 +135,7 @@ require([
         // If there is a message enable de next button
         connection.trigger('updateButton', {
             button: 'done',
-            enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
+            enabled: true
         });
     }
 
