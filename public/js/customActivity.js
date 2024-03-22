@@ -220,7 +220,6 @@ require([
         // may be overridden as desired.
         
 
-        console.log(type)
         payload['arguments'].execute.inArguments[0].sendId = sendId
         payload['arguments'].execute.inArguments[0].suid = suid
         payload['arguments'].execute.inArguments[0].coop = coop
