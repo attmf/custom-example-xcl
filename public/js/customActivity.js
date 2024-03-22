@@ -39,7 +39,7 @@ require([
 
         
         // Disable the done button if a value isn't selected
-        $('#idPartMktCloud').on('input', () => {
+        $('#sendId, #suid, #coop, #account, #category, #family, #eventDate, #idPartMktCloud').on('input', () => {
             let sendId = $('#sendId').val()
             let suid = $('#suid').val()
             let coop = $('#coop').val()
