@@ -133,17 +133,25 @@ function generateRoutes(app) {
         console.log('debug: /execute');
 
         // example: https://developer.salesforce.com/docs/atlas.en-us.noversion.mc-app-development.meta/mc-app-development/example-rest-activity.htm
-        const messageInArgument = req.body.inArguments[0]['message'];
-        const typeInArgument = req.body.inArguments[0]['type'];
-        const categoryKeyInArgument = req.body.inArguments[0]['category'];
-        const buttonTitleIDInArgument = req.body.inArguments[0]['buttonTitle'];
+        const sendIdInArgument = req.body.inArguments[0]['sendId'];
+        const suidInArgument = req.body.inArguments[0]['suid'];
+        const coopInArgument = req.body.inArguments[0]['coop'];
+        const accountInArgument = req.body.inArguments[0]['account'];
+        const categoryInArgument = req.body.inArguments[0]['category'];
+        const familyInArgument = req.body.inArguments[0]['family'];
+        const eventDateInArgument = req.body.inArguments[0]['eventDate'];
+        const idPartMktCloudInArgument = req.body.inArguments[0]['idPartMktCloud'];
 
         const payloadAxios = {
             "items": [{
-                "Email": typeInArgument,
-                "message": messageInArgument,
-                "SubscriberKey": categoryKeyInArgument,
-                "numberID": buttonTitleIDInArgument
+                "sendId": sendIdInArgument,
+                "suid": suidInArgument,
+                "coop": coopInArgument,
+                "account": accountInArgument,
+                "category": categoryInArgument,
+                "family": familyInArgument,
+                "eventDate": eventDateInArgument,
+                "idPartMktCloud": idPartMktCloudInArgument
             }]
         }
 

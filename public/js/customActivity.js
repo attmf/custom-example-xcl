@@ -38,12 +38,20 @@ require([
         
         // Disable the done button if a value isn't selected
         $('#message').on('input', () => {
-            let message = $('#message').val()
-            let type = $('#message2').val()
+            // let message = $('#message').val()
+            // let type = $('#message2').val()
+            // let category = $('#category').val()
+            let sendId = $('#sendId').val()
+            let suid = $('#suid').val()
+            let coop = $('#coop').val()
+            let account = $('#account').val()
             let category = $('#category').val()
+            let family = $('#family').val()
+            let eventDate = $('#eventDate').val()
+            let idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(message&&type&&category)
+                enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
             });
         });
 
@@ -62,10 +70,18 @@ require([
             payload = data;
         }
 
-        let message;
+        // let message;
+        // let category;
+        // let type;
+        // let buttonTitle;
+        let sendId;
+        let suid;
+        let coop;
+        let account;
         let category;
-        let type;
-        let buttonTitle;
+        let family;
+        let eventDate;
+        let idPartMktCloud;
 
         let hasInArguments = Boolean(
             payload['arguments'] &&
@@ -84,30 +100,47 @@ require([
 
         $.each(inArguments, (index, inArgument) => {
             $.each(inArgument, (key, val) => {
-                if (key === 'message') {
-                    message = val;
+                if (key === 'sendId') {
+                    sendId = val;
                 }
-                else if (key === 'type') {
-                    type = val;
+                else if (key === 'suid') {
+                    suid = val;
+                }
+                else if (key === 'coop') {
+                    coop = val;
+                }
+                else if (key === 'account') {
+                    account = val;
                 }
                 else if (key === 'category') {
                     category = val;
                 }
-                else if (key === 'buttonTitle') {
-                    buttonTitle = val;
+                else if (key === 'family') {
+                    family = val;
+                }
+                else if (key === 'eventDate') {
+                    eventDate = val;
+                }
+                else if (key === 'idPartMktCloud') {
+                    idPartMktCloud = val;
                 }
             });
         });
 
-        console.log('message -- ', message)
-        console.log('type -- ', type)
-        console.log('categoria -- ', category)
-        console.log('buttonTitle -- ', buttonTitle)
 
-        $('#message').val(message);
-        $('#message2').val(type);
+        $('#sendId').val(sendId);
+        $('#suid').val(suid);
+        $('#coop').val(coop);
+        $('#account').val(account);
         $('#category').val(category);
-        $('#buttonTitle').val(buttonTitle.replace(/\{{[\s\S]*?\}}/g, ''));
+        $('#family').val(family);
+        $('#eventDate').val(eventDate);
+        $('#idPartMktCloud').val(idPartMktCloud);
+
+        // $('#message').val(message);
+        // $('#message2').val(type);
+        // $('#category').val(category);
+        // $('#buttonTitle').val(buttonTitle.replace(/\{{[\s\S]*?\}}/g, ''));
 
         // If there is a message enable de next button
         connection.trigger('updateButton', {
@@ -167,10 +200,19 @@ require([
     }
 
     function save() {
-        var message = $('#message').val();
-        var type = $('#message2').val();
-        var category = $('#category').val();
+        // var message = $('#message').val();
+        // var type = $('#message2').val();
+        // var category = $('#category').val();
+        // var buttonTitle = $('#buttonTitle').val();
         var buttonTitle = $('#buttonTitle').val();
+        var sendId = $('#sendId').val();
+        var suid = $('#suid').val();
+        var coop = $('#coop').val();
+        var account = $('#account').val();
+        var category = $('#category').val();
+        var family = $('#family').val();
+        var eventDate = $('#eventDate').val();
+        var idPartMktCloud = $('#idPartMktCloud').val();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -179,11 +221,19 @@ require([
         
 
         console.log(type)
-
-        payload['arguments'].execute.inArguments[0].message = message
-        payload['arguments'].execute.inArguments[0].type = type
+        payload['arguments'].execute.inArguments[0].sendId = sendId
+        payload['arguments'].execute.inArguments[0].suid = suid
+        payload['arguments'].execute.inArguments[0].coop = coop
+        payload['arguments'].execute.inArguments[0].account = account
         payload['arguments'].execute.inArguments[0].category = category
-        payload['arguments'].execute.inArguments[0].buttonTitle = buttonTitle
+        payload['arguments'].execute.inArguments[0].family = family
+        payload['arguments'].execute.inArguments[0].eventDate = eventDate
+        payload['arguments'].execute.inArguments[0].idPartMktCloud = idPartMktCloud
+
+        // payload['arguments'].execute.inArguments[0].message = message
+        // payload['arguments'].execute.inArguments[0].type = type
+        // payload['arguments'].execute.inArguments[0].category = category
+        // payload['arguments'].execute.inArguments[0].buttonTitle = buttonTitle
         //payload['arguments'].execute.inArguments[0].name = `{{Event.${eventDefinitionKey}."name"}}`
 
         payload['metaData'].isConfigured = true;
