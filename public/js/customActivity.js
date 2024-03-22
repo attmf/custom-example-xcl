@@ -7,14 +7,7 @@ require([
     const connection = new Postmonger.Session();
     var payload = {};
 
-    let sendId;
-    let suid;
-    let coop;
-    let account;
-    let category;
-    let family;
-    let eventDate;
-    let idPartMktCloud;
+    
     let eventDefinitionKey;
     var steps = [{
             label: 'Step 1',
@@ -40,6 +33,14 @@ require([
 
 
     function onRender() {
+        let sendId;
+        let suid;
+        let coop;
+        let account;
+        let category;
+        let family;
+        let eventDate;
+        let idPartMktCloud;
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
 
@@ -56,7 +57,7 @@ require([
             idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(idPartMktCloud.val)
+                enabled: Boolean(idPartMktCloud)
             });
         });
 
@@ -135,7 +136,7 @@ require([
         // If there is a message enable de next button
         connection.trigger('updateButton', {
             button: 'next',
-            enabled: Boolean(idPartMktCloud.val)
+            enabled: Boolean(idPartMktCloud)
         });
     }
 
@@ -183,7 +184,7 @@ require([
                     button: 'next',
                     text: 'done',
                     visible: true,
-                    enabled: Boolean(idPartMktCloud.val)
+                    enabled: Boolean(idPartMktCloud)
                 });
                 break;
         }
