@@ -39,18 +39,16 @@ require([
 
         
         // Disable the done button if a value isn't selected
-        $('#sendId, #suid, #coop, #account, #category, #family, #eventDate, #idPartMktCloud').on('input', () => {
-            let sendId = $('#sendId').val()
+        $('#suid, #coop, #account, #category, #family, #idPartMktCloud').on('input', () => {
             let suid = $('#suid').val()
             let coop = $('#coop').val()
             let account = $('#account').val()
             let category = $('#category').val()
             let family = $('#family').val()
-            let eventDate = $('#eventDate').val()
             let idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
+                enabled: Boolean(suid&&coop&&account&&category&&family&&idPartMktCloud)
             });
         });
 
@@ -69,13 +67,11 @@ require([
             payload = data;
         }
 
-        let sendId;
         let suid;
         let coop;
         let account;
         let category;
         let family;
-        let eventDate;
         let idPartMktCloud;
 
         let hasInArguments = Boolean(
@@ -95,10 +91,7 @@ require([
 
         $.each(inArguments, (index, inArgument) => {
             $.each(inArgument, (key, val) => {
-                if (key === 'sendId') {
-                    sendId = val;
-                }
-                else if (key === 'suid') {
+                if (key === 'suid') {
                     suid = val;
                 }
                 else if (key === 'coop') {
@@ -113,9 +106,6 @@ require([
                 else if (key === 'family') {
                     family = val;
                 }
-                else if (key === 'eventDate') {
-                    eventDate = val;
-                }
                 else if (key === 'idPartMktCloud') {
                     idPartMktCloud = val;
                 }
@@ -123,13 +113,11 @@ require([
         });
 
 
-        $('#sendId').val(sendId);
         $('#suid').val(suid);
         $('#coop').val(coop);
         $('#account').val(account);
         $('#category').val(category);
         $('#family').val(family);
-        $('#eventDate').val(eventDate);
         $('#idPartMktCloud').val(idPartMktCloud);
 
 
@@ -196,7 +184,6 @@ require([
         let account = $('#account').val();
         let category = $('#category').val();
         let family = $('#family').val();
-        let eventDate = $('#eventDate').val();
         let idPartMktCloud = $('#idPartMktCloud').val();
 
         // 'payload' is initialized on 'initActivity' above.
@@ -205,13 +192,11 @@ require([
         // may be overridden as desired.
         
 
-        payload['arguments'].execute.inArguments[0].sendId = suid + coop + account
         payload['arguments'].execute.inArguments[0].suid = `{{Event.${eventDefinitionKey}."${suid}"}}` //DE
         payload['arguments'].execute.inArguments[0].coop = coop //DE
         payload['arguments'].execute.inArguments[0].account = account //DE
         payload['arguments'].execute.inArguments[0].category = category
         payload['arguments'].execute.inArguments[0].family = family
-        payload['arguments'].execute.inArguments[0].eventDate = eventDate //GERAR
         payload['arguments'].execute.inArguments[0].idPartMktCloud = idPartMktCloud //INPUT
 
         //payload['arguments'].execute.inArguments[0].name = `{{Event.${eventDefinitionKey}."name"}}`
