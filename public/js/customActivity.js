@@ -166,7 +166,7 @@ require([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(idPartMktCloud.val)
+                    enabled: Boolean(idPartMktCloud)
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
