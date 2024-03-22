@@ -216,7 +216,7 @@ require([
         
 
         payload['arguments'].execute.inArguments[0].sendId = suid + coop + account
-        payload['arguments'].execute.inArguments[0].suid = `{{Event.${eventDefinitionKey}.${suid}}}` //DE
+        payload['arguments'].execute.inArguments[0].suid = `{{Event.${eventDefinitionKey}."${suid}"}}` //DE
         payload['arguments'].execute.inArguments[0].coop = coop //DE
         payload['arguments'].execute.inArguments[0].account = account //DE
         payload['arguments'].execute.inArguments[0].category = category
