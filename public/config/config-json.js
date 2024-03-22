@@ -47,7 +47,6 @@ module.exports = function configJSON(req) {
             }
         ],
         userInterfaces: {
-            configurationSupportsReadOnlyMode: true,
             configInspector: {
                 size: 'medium',
                 emptyIframe: false

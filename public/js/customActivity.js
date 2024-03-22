@@ -38,9 +38,6 @@ require([
         
         // Disable the done button if a value isn't selected
         $('#idPartMktCloud').on('input', () => {
-            // let message = $('#message').val()
-            // let type = $('#message2').val()
-            // let category = $('#category').val()
             let sendId = $('#sendId').val()
             let suid = $('#suid').val()
             let coop = $('#coop').val()
@@ -51,7 +48,7 @@ require([
             let idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'done',
-                enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
+                enabled: Boolean(idPartMktCloud)
             });
         });
 
@@ -70,10 +67,6 @@ require([
             payload = data;
         }
 
-        // let message;
-        // let category;
-        // let type;
-        // let buttonTitle;
         let sendId;
         let suid;
         let coop;
@@ -137,10 +130,6 @@ require([
         $('#eventDate').val(eventDate);
         $('#idPartMktCloud').val(idPartMktCloud);
 
-        // $('#message').val(message);
-        // $('#message2').val(type);
-        // $('#category').val(category);
-        // $('#buttonTitle').val(buttonTitle.replace(/\{{[\s\S]*?\}}/g, ''));
 
         // If there is a message enable de next button
         connection.trigger('updateButton', {
@@ -176,7 +165,7 @@ require([
                 $('#step1').show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean($('#message').val())
+                    enabled: Boolean($('#idPartMktCloud').val())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
