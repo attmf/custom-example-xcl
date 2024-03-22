@@ -24,22 +24,22 @@ function generateRoutes(app) {
     app.use(bodyParser.json());
 
     // Axios interceptor that always generate a token for Marketing Cloud APIs
-    axios.interceptors.request.use(async (config) => {
-        if (!config.url.endsWith('token')) {
-            await axios.post(`${process.env.urlAuth}v2/token`, {
-                "grant_type": "client_credentials",
-                "client_id": process.env.client_id,
-                "client_secret": process.env.client_secret
-            }).then(res => {
-                token = res.data.access_token
-                config.headers.Authorization = `Bearer ${token}`;
-            })
-        }
-        return config;
-    }, (error) => {
-        // I cand handle a request with errors here
-        return Promise.reject(error);
-    });
+    // axios.interceptors.request.use(async (config) => {
+    //     if (!config.url.endsWith('token')) {
+    //         await axios.post(`${process.env.urlAuth}v2/token`, {
+    //             "grant_type": "client_credentials",
+    //             "client_id": process.env.client_id,
+    //             "client_secret": process.env.client_secret
+    //         }).then(res => {
+    //             token = res.data.access_token
+    //             config.headers.Authorization = `Bearer ${token}`;
+    //         })
+    //     }
+    // //     return config;
+    // }, (error) => {
+    //     // I cand handle a request with errors here
+    //     return Promise.reject(error);
+    // });
 
 
 
@@ -147,21 +147,24 @@ function generateRoutes(app) {
             }]
         }
 
+        console.log('Payload:' + payloadAxios)
+
         const config = {
             headers: {
               'Authorization': 'Bearer iWw9Bd8ahpAXChc3KtbWz6vg'
             }
         }
 
+
         // Debug
-        axios.post('https://in.logs.betterstack.com',
-            payloadAxios,
-            config
-        ).then(res => {
-            console.log(`statusCodeRequestBin: ${res.status}`)
-        }).catch(error => {
-            console.error(error)
-        });
+        // axios.post('https://in.logs.betterstack.com',
+        //     payloadAxios,
+        //     config
+        // ).then(res => {
+        //     console.log(`statusCodeRequestBin: ${res.status}`)
+        // }).catch(error => {
+        //     console.error(error)
+        // });
 
         // Insert Data to DE
         // axios.post(`${process.env.urlRest}data/v1/async/dataextensions/key:${process.env.deKey}/rows/`, payloadAxios)
