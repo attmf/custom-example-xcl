@@ -7,6 +7,14 @@ require([
     const connection = new Postmonger.Session();
     var payload = {};
 
+    let sendId;
+    let suid;
+    let coop;
+    let account;
+    let category;
+    let family;
+    let eventDate;
+    let idPartMktCloud;
     let eventDefinitionKey;
     var steps = [{
             label: 'Step 1',
@@ -38,14 +46,14 @@ require([
         
         // Disable the done button if a value isn't selected
         $('#idPartMktCloud').on('input', () => {
-            let sendId = $('#sendId').val()
-            let suid = $('#suid').val()
-            let coop = $('#coop').val()
-            let account = $('#account').val()
-            let category = $('#category').val()
-            let family = $('#family').val()
-            let eventDate = $('#eventDate').val()
-            let idPartMktCloud = $('#idPartMktCloud').val()
+            sendId = $('#sendId').val()
+            suid = $('#suid').val()
+            coop = $('#coop').val()
+            account = $('#account').val()
+            category = $('#category').val()
+            family = $('#family').val()
+            eventDate = $('#eventDate').val()
+            idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'done',
                 enabled: Boolean(idPartMktCloud)
@@ -67,14 +75,7 @@ require([
             payload = data;
         }
 
-        let sendId;
-        let suid;
-        let coop;
-        let account;
-        let category;
-        let family;
-        let eventDate;
-        let idPartMktCloud;
+        
 
         let hasInArguments = Boolean(
             payload['arguments'] &&
@@ -189,14 +190,14 @@ require([
     }
 
     function save() {
-        var sendId = $('#sendId').val();
-        var suid = $('#suid').val();
-        var coop = $('#coop').val();
-        var account = $('#account').val();
-        var category = $('#category').val();
-        var family = $('#family').val();
-        var eventDate = $('#eventDate').val();
-        var idPartMktCloud = $('#idPartMktCloud').val();
+        sendId = $('#sendId').val();
+        suid = $('#suid').val();
+        coop = $('#coop').val();
+        account = $('#account').val();
+        category = $('#category').val();
+        family = $('#family').val();
+        eventDate = $('#eventDate').val();
+        idPartMktCloud = $('#idPartMktCloud').val();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
