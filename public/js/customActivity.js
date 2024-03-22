@@ -37,7 +37,7 @@ require([
 
         
         // Disable the done button if a value isn't selected
-        $('#message').on('input', () => {
+        $('#idPartMktCloud').on('input', () => {
             // let message = $('#message').val()
             // let type = $('#message2').val()
             // let category = $('#category').val()
@@ -51,7 +51,7 @@ require([
             let idPartMktCloud = $('#idPartMktCloud').val()
             connection.trigger('updateButton', {
                 button: 'next',
-                enabled: Boolean(sendId)
+                enabled: Boolean(sendId&&suid&&coop&&account&&category&&family&&eventDate&&idPartMktCloud)
             });
         });
 
