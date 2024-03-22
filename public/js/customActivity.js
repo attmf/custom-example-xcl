@@ -91,26 +91,23 @@ require([
 
         $.each(inArguments, (index, inArgument) => {
             $.each(inArgument, (key, val) => {
-                if (index === 0) {
-                    if (key === 'category') {
-                        category = val;
-                    }
-                    else if (key === 'family') {
-                        family = val;
-                    }
-                    else if (key === 'idPartMktCloud') {
-                        idPartMktCloud = val;
-                    }
-                } else if (index === 1) {
-                    if (key === 'suid') {
-                        suid = val;
-                    }
-                    else if (key === 'coop') {
-                        coop = val;
-                    }
-                    else if (key === 'account') {
-                        account = val;
-                    }
+                if (key === 'suidField') {
+                    suid = val;
+                }
+                else if (key === 'coopField') {
+                    coop = val;
+                }
+                else if (key === 'accountField') {
+                    account = val;
+                }
+                else if (key === 'category') {
+                    category = val;
+                }
+                else if (key === 'family') {
+                    family = val;
+                }
+                else if (key === 'idPartMktCloud') {
+                    idPartMktCloud = val;
                 }
             });
         });
@@ -201,9 +198,9 @@ require([
         payload['arguments'].execute.inArguments[0].category = category
         payload['arguments'].execute.inArguments[0].family = family
         payload['arguments'].execute.inArguments[0].idPartMktCloud = idPartMktCloud //INPUT
-        payload['arguments'].execute.inArguments[1].suid = suid
-        payload['arguments'].execute.inArguments[1].coop = coop
-        payload['arguments'].execute.inArguments[1].account = account
+        payload['arguments'].execute.inArguments[0].suidField = suid
+        payload['arguments'].execute.inArguments[0].coopField = coop
+        payload['arguments'].execute.inArguments[0].accountField = account
 
         //payload['arguments'].execute.inArguments[0].name = `{{Event.${eventDefinitionKey}."name"}}`
 
