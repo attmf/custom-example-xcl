@@ -17,28 +17,52 @@ module.exports = function configJSON(req) {
         arguments: {
             execute: {
                 inArguments: [{
-                    SubscriberKey: '{{Contact.Key}}'
                 }],
                 outArguments: [],
                 url: `${fullUrl}/execute`,
                 timeout: 10000,
                 retryCount: 3,
                 retryDelay: 1000,
-                concurrentRequests: 5
+                concurrentRequests: 5,
+                useJwt: false,
+                securityOptions: {
+                    securityType: 'securityContext',
+                    securityContextKey: 'communication-stimulus-auth'
+                }
             }
         },
         configurationArguments: {
             publish: {
-                url: `${fullUrl}/publish`
+                url: `${fullUrl}/publish`,
+                useJwt: false,
+                securityOptions: {
+                    securityType: 'securityContext',
+                    securityContextKey: 'communication-stimulus-auth'
+                }
             },
             save: {
-                url: `${fullUrl}/save`
+                url: `${fullUrl}/save`,
+                useJwt: false,
+                securityOptions: {
+                    securityType: 'securityContext',
+                    securityContextKey: 'communication-stimulus-auth'
+                }
             },
             stop: {
-                url: `${fullUrl}/stop`
+                url: `${fullUrl}/stop`,
+                useJwt: false,
+                securityOptions: {
+                    securityType: 'securityContext',
+                    securityContextKey: 'communication-stimulus-auth'
+                }
             },
             validate: {
-                url: `${fullUrl}/validate`
+                url: `${fullUrl}/validate`,
+                useJwt: false,
+                securityOptions: {
+                    securityType: 'securityContext',
+                    securityContextKey: 'communication-stimulus-auth'
+                }
             },
         },
         wizardSteps: [{
