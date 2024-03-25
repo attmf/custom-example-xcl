@@ -34,12 +34,7 @@ module.exports = function configJSON(req) {
         },
         configurationArguments: {
             publish: {
-                url: `${fullUrl}/publish`,
-                useJwt: false,
-                securityOptions: {
-                    securityType: 'securityContext',
-                    securityContextKey: 'communication-stimulus-auth'
-                }
+                url: `${fullUrl}/publish`
             },
             save: {
                 url: `${fullUrl}/save`
