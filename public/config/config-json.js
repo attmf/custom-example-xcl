@@ -42,28 +42,13 @@ module.exports = function configJSON(req) {
                 }
             },
             save: {
-                url: `${fullUrl}/save`,
-                useJwt: false,
-                securityOptions: {
-                    securityType: 'securityContext',
-                    securityContextKey: 'communication-stimulus-auth'
-                }
+                url: `${fullUrl}/save`
             },
             stop: {
-                url: `${fullUrl}/stop`,
-                useJwt: false,
-                securityOptions: {
-                    securityType: 'securityContext',
-                    securityContextKey: 'communication-stimulus-auth'
-                }
+                url: `${fullUrl}/stop`
             },
             validate: {
-                url: `${fullUrl}/validate`,
-                useJwt: false,
-                securityOptions: {
-                    securityType: 'securityContext',
-                    securityContextKey: 'communication-stimulus-auth'
-                }
+                url: `${fullUrl}/validate`
             },
         },
         wizardSteps: [{
