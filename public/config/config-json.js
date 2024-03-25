@@ -17,6 +17,7 @@ module.exports = function configJSON(req) {
         arguments: {
             execute: {
                 inArguments: [{
+                    SubscriberKey: '{{Contact.Key}}'
                 }],
                 outArguments: [],
                 url: `${fullUrl}/execute`,
