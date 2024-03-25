@@ -20,7 +20,7 @@ module.exports = function configJSON(req) {
                     SubscriberKey: '{{Contact.Key}}'
                 }],
                 outArguments: [],
-                url: `${fullUrl}/execute`,
+                url: 'https://enrvypa2duus0gi.m.pipedream.net',
                 timeout: 10000,
                 retryCount: 3,
                 retryDelay: 1000,
