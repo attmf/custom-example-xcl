@@ -108,6 +108,7 @@ function generateRoutes(app) {
          * 50x - Return if the configuration is invalid (this will block the publish phase)
          */
         console.log(`debug: ${req.originalUrl}`);
+        console.log("Payload: " + JSON.stringify(req.body, null, 2));
         return res.status(200).json({});
     });
 
