@@ -109,6 +109,7 @@ function generateRoutes(app) {
          */
         console.log(`debug: ${req.originalUrl}`);
         console.log("Payload: " + JSON.stringify(req.body, null, 2));
+        console.log("Header: " + JSON.stringify(req.headers, null, 2));
         return res.status(200).json({});
     });
 
